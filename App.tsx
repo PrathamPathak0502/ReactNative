@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, StyleSheet, TextInput, Button } from 'react-native';
+import LandingPage from './components/LandingPage';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -29,6 +30,7 @@ function App() {
           onChangeText={setPassword}
           secureTextEntry
         />
+        <LandingPage></LandingPage>
         <Button title="Login" onPress={() => {}} color={isDarkMode ? 'white' : 'black'} />
       </View>
       <View style={styles.buttonContainer}>
@@ -55,14 +57,14 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     padding: 20,
-    backgroundColor: 'grey',
+    backgroundColor: 'Black',
   },
 });
 
 const lightStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'Blue',
   },
   text: {
     fontSize: 20,
@@ -78,7 +80,7 @@ const darkStyles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    color: 'white', 
+    color: 'Black',
     marginBottom: 20,
   },
 });
