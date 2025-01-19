@@ -31,8 +31,9 @@ function App() {
           secureTextEntry
         />
         <LandingPage></LandingPage>
+        
         <Button title="Login" onPress={() => {}} color={isDarkMode ? 'white' : 'black'} />
-      </View>
+        </View>
       <View style={styles.buttonContainer}>
         <Button title="Colour change" onPress={toggleTheme} color={isDarkMode ? 'white' : 'black'} />
       </View>
@@ -83,6 +84,7 @@ const darkStyles = StyleSheet.create({
     color: 'Black',
     marginBottom: 20,
   },
+ 
 });
 
 export default App;
