@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TextInput, Button, StyleSheet, Alert, Platform } from 'react-native';
 import LandingPage from './components/LandingPage';
 
+
 const App = () => {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
@@ -67,7 +68,9 @@ const App = () => {
         <Button title="Toggle Dark Mode" onPress={toggleDarkMode} color={isDarkMode ? 'white' : 'black'} />
       </View>
       <LandingPage />
+
     </SafeAreaView>
+    
   );
 };
 
