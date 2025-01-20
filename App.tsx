@@ -1,14 +1,47 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, StyleSheet, TextInput, Button } from 'react-native';
+import { SafeAreaView, View, Text, TextInput, Button, StyleSheet, Alert, Platform } from 'react-native';
 import LandingPage from './components/LandingPage';
 
-function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+const App = () => {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const toggleTheme = () => {
+  const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
+  };
+
+  // Dynamically set the API URL based on the platform (Android emulator or physical device)
+  const getApiUrl = () => {
+    if (Platform.OS === 'android') {
+      // Use '10.0.2.2' for Android emulator
+      return 'http://10.0.2.2:3001/api/login';
+    } else {
+      // For physical devices, use the local machine's IP address
+      return 'http://<your-ip-address>:3001/api/login';  // Replace <your-ip-address> with your actual local IP
+    }
+  };
+
+  const handleLogin = () => {
+    fetch(getApiUrl(), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId, password }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          Alert.alert('Login successful');
+        } else {
+          Alert.alert('Invalid credentials');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        Alert.alert('Error logging in');
+      });
   };
 
   return (
@@ -30,61 +63,47 @@ function App() {
           onChangeText={setPassword}
           secureTextEntry
         />
-        <LandingPage></LandingPage>
-        
-        <Button title="Login" onPress={() => {}} color={isDarkMode ? 'white' : 'black'} />
-        </View>
-      <View style={styles.buttonContainer}>
-        <Button title="Colour change" onPress={toggleTheme} color={isDarkMode ? 'white' : 'black'} />
+        <Button title="Login" onPress={handleLogin} color={isDarkMode ? 'white' : 'black'} />
+        <Button title="Toggle Dark Mode" onPress={toggleDarkMode} color={isDarkMode ? 'white' : 'black'} />
       </View>
+      <LandingPage />
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   input: {
-    width: '80%',
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    marginBottom: 20,
-    paddingHorizontal: 10,
-    color: 'black',
-  },
-  buttonContainer: {
-    padding: 20,
-    backgroundColor: 'Black',
-  },
-});
-
-const lightStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'Blue',
-  },
-  text: {
-    fontSize: 20,
-    color: 'black',
-    marginBottom: 20,
+    marginBottom: 12,
+    paddingHorizontal: 8,
+    width: '80%',
   },
 });
 
 const darkStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: 'black',
   },
   text: {
-    fontSize: 20,
-    color: 'Black',
-    marginBottom: 20,
+    color: 'white',
   },
- 
+});
+
+const lightStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  text: {
+    color: 'black',
+  },
 });
 
 export default App;
