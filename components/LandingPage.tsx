@@ -8,6 +8,7 @@ function LandingPage() {
         <Text style={styles.text}>Welcome to UKSHATI TECHNOLOGIES</Text>
         <View style={styles.card}>
           <Text style={styles.cardTitle}>UNO</Text>
+        
           <Text style={styles.cardContent}>Single Pump can be used in residental area.</Text>
         </View>
       </View>
