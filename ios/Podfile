@@ -14,7 +14,11 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
+<<<<<<< HEAD
 target 'AwesomeProject' do
+=======
+target 'MyNewProject' do
+>>>>>>> 9f79f39 (Initial commit)
   config = use_native_modules!
 
   use_react_native!(
@@ -23,11 +27,14 @@ target 'AwesomeProject' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+<<<<<<< HEAD
   target 'AwesomeProjectTests' do
     inherit! :complete
     # Pods for testing
   end
 
+=======
+>>>>>>> 9f79f39 (Initial commit)
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(

@@ -1,3 +1,7 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">AwesomeProject</string>
+=======
+    <string name="app_name">MyNewProject</string>
+>>>>>>> 9f79f39 (Initial commit)
 </resources>
