@@ -77,9 +77,15 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
+<<<<<<< HEAD
     namespace "com.awesomeproject"
     defaultConfig {
         applicationId "com.awesomeproject"
+=======
+    namespace "com.mynewproject"
+    defaultConfig {
+        applicationId "com.mynewproject"
+>>>>>>> 9f79f39 (Initial commit)
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
