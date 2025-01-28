@@ -1,0 +1,32 @@
+for demo
+
+Create Database Demo;
+use Demo;
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    device_type VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE schedule (
+    id INT ,
+    date DATE PRIMARY KEY,
+    time TIME NOT NULL,
+    duration INT NOT NULL,
+    tap_here VARCHAR(255),
+    UNIQUE (date)
+);
+use demo;
+select * from schedule;
+
+For Uno
+CREATE TABLE uno (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    schedule_id INT NOT NULL,
+    tap_state ENUM('on', 'off') NOT NULL,
+    change_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (schedule_id) REFERENCES schedule(id)
+);
+
+
